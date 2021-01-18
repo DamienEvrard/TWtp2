@@ -27,10 +27,10 @@
                                 <label for="dimension">Dimension</label>
                                 <input type="text" th:field="*{dimension}" placeholder="Dimension du tableau"/>				
 			
-                                <label for="auteur_id">auteur</label>
-                                <select>
+                                <label for="auteur_id">Auteur</label>
+                                <select  name="auteur" id="auteur">
                                     <option th:each="a: ${artistes}" th:value="${a.id}">[[${a.nom}]]</option>
-                                    <option value="null">Auteur inconnu</option>
+                                    <option value="">Auteur inconnu</option>
                                 </select>		
 			</div>
 		</form>		
