@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<!--/* 
+	Information transmise par le contrôleur :
+	- tableau : le tableau à editer
+        - artistes : liste des artiste de la base de donnée
+*/-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Ajouter un tableau</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>	
+	</head>
+	<body>
+		<h1>Ajouter un tableau</h1>
+		<form th:object="${tableau}" method="POST" th:action="@{saveTab}">
+			<div class="column">
+				<label for="titre">Titre</label>
+				<input type="text" th:field="*{titre}" placeholder="Nom du tableau"/>
+                                <hr/>
+				<input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
+			</div>
+			<div class="column">
+                                <label for="support">Support</label>
+                                <input type="text" th:field="*{support}" placeholder="Support du tableau"/>				
+			
+                                <label for="dimension">Dimension</label>
+                                <input type="text" th:field="*{dimension}" placeholder="Dimension du tableau"/>				
+			
+                                <label for="auteur_id">auteur</label>
+                                <select>
+                                    <option th:each="a: ${artistes}" th:value="${a.id}">[[${a.nom}]]</option>
+                                    <option value="null">Auteur inconnu</option>
+                                </select>		
+			</div>
+		</form>		
+		<hr/>
+		<a th:href="@{/}" href="../static/index.html">Retour au menu</a>
+		<hr/>
+	</body>
+</html>

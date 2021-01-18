@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<!--/* 
+	Le contrôleur transmet deux informations à cette vue :
+		- tableaux : la liste des tableaux à afficher
+		- message : un éventuel message d'erreur ou d'information
+*/-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Liste des tableaux</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css"/>	
+	</head>
+	<body>
+		<h1>Les tableaux</h1>
+		<a th:href="@{addTab}" href='formulaireTableaux.html'>Ajouter un tableau</a>
+		<h3 th:text="${message}">Message de succès ou d'erreur</h3>				
+		<table border = "1">
+                    <tr><td>Titre</td><td>Support</td><td>dimension</td><td>Auteur</td><td>Action</td></tr>
+			<tr th:each="t: ${tableaux}">
+				<td th:text="${t.titre}">Le titre du tableau</td>
+				<td th:text="${t.support}">Le support du tableau</td>
+                                <td th:text="${t.dimension}">La dimention du tableau</td>
+                                <td th:if="${t.auteur==Null}">Auteur inconnu</td>
+                                <td th:unless="${t.auteur==Null}">[[${t.auteur.nom}]]</td>
+                                <td><a th:href="@{deleteTab(id=${t.id})}">Supprimer le tableau n° [[${t.id}]]</a></td>
+                                
+			</tr>
+		</table>
+		<hr/>
+		<a th:href="@{/}" href="../static/index.html">Retour au menu</a>
+		<hr/>
+	</body>
+</html>

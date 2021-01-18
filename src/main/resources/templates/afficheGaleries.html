@@ -25,9 +25,7 @@
 				Adresse: <em th:text="${g.adresse}">L'adresse de la galerie</em>
                                 <a th:href="@{delete(id=${g.id})}">Supprimer la galerie n° [[${g.id}]]</a>
                                 <ul>
-                			<li th:each="e: ${g.evenements}" th:text='${e.intitule}'>
-                                            
-                                        </li>
+                			<li th:each="e: ${g.evenements}" th:text='${e.intitule}'></li>
                                 </ul>
 			</li>
 		</ul>
